@@ -40,7 +40,7 @@ webfont.WebFont.prototype.isModuleSupportingUserAgent_ = function(module, eventD
         eventDispatcher.dispatchLoading();
       }
     }
-    fontWatcher.watch([], {}, {}, allModulesLoaded);
+    fontWatcher.watch([], {}, allModulesLoaded);
     return;
   }
   module.load(webfont.bind(this, this.onModuleReady_, eventDispatcher,
