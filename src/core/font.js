@@ -48,18 +48,16 @@ webfont.WebFont.prototype.isModuleSupportingUserAgent_ = function(module, eventD
 };
 
 webfont.WebFont.prototype.onModuleReady_ = function(eventDispatcher, fontWatcher,
-    fontFamilies, opt_fontDescriptions, opt_fontTestStrings) {
+    fontFamilies, opt_fontDescriptions) {
   var allModulesLoaded = --this.moduleLoading_ == 0;
 
   if (allModulesLoaded) {
     eventDispatcher.dispatchLoading();
   }
   this.asyncCall_(webfont.bind(this, function(_fontWatcher, _fontFamilies,
-    _fontDescriptions, _fontTestStrings, _allModulesLoaded) {
-    _fontWatcher.watch(_fontFamilies, _fontDescriptions || {},
-    _fontTestStrings || {}, _allModulesLoaded);
-  }, fontWatcher, fontFamilies, opt_fontDescriptions, opt_fontTestStrings,
-      allModulesLoaded));
+      _fontDescriptions, _allModulesLoaded) {
+    _fontWatcher.watch(_fontFamilies, _fontDescriptions || {}, _allModulesLoaded);
+  }, fontWatcher, fontFamilies, opt_fontDescriptions, allModulesLoaded));
 };
 
 webfont.WebFont.prototype.load_ = function(eventDispatcher, configuration) {
